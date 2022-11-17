@@ -10,7 +10,7 @@ public abstract class VendingItem {
     private Integer startingStock = 6;
 
 
-    public VendingItem(String name, BigDecimal price, String slot, String typeOfItem, Integer startingStock) {
+    public VendingItem(String name, BigDecimal price, String slot, String typeOfItem) {
         this.name = name;
         this.price = price;
         this.slot = slot;
@@ -57,4 +57,6 @@ public abstract class VendingItem {
     public void setStartingStock(Integer startingStock) {
         this.startingStock = startingStock;
     }
+
+
 }

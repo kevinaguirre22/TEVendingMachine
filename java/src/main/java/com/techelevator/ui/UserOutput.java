@@ -30,7 +30,9 @@ public class UserOutput
     }
 
     public static void displayInventory(){
+
         System.out.println();
+
     }
 
 }
