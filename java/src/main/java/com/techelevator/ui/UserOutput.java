@@ -29,4 +29,8 @@ public class UserOutput
         System.out.println();
     }
 
+    public static void displayInventory(){
+        System.out.println();
+    }
+
 }
