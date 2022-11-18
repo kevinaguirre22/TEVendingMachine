@@ -79,10 +79,10 @@ public class UserInput
         }
 
     }
-    public static String getUserMoney(){
-        while()
-        System.out.println("Please enter ");
-    }
+//    public static String getUserMoney(){
+//
+//        System.out.println("Please enter ");
+//    }
 
 
 

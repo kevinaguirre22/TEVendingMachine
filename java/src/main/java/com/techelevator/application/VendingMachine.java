@@ -6,6 +6,7 @@ import com.techelevator.ui.UserOutput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class VendingMachine 
@@ -91,11 +92,32 @@ public class VendingMachine
                 String choice2 = UserInput.getPurchasingScreenOption();
                 if (choice2.equals("feed money")){
                     while(true){
-                        System.out.println("What bill are you putting in: 1, 5, 10, 20");
-                        BigDecimal bill = scan.nextBigDecimal();
-                        System.out.println("Are you finished?");
-                        String decision = scan.nextLine();
-                        BigDecimal money = BigDecimal.valueOf();
+
+                        BigDecimal total= BigDecimal.valueOf(0);
+                        BigDecimal bill = BigDecimal.valueOf(0);
+                        String decision;
+                        do{
+                            System.out.println("What bill are you putting in: 1, 5, 10, 20");
+                            bill = scan.nextBigDecimal();
+                            //total = bill.add(total);
+
+                            System.out.println("Are you finished?");
+                            decision = scan.nextLine();
+
+                            if(decision.equals("N")){
+                                System.out.println("Put in your next bill");
+                                BigDecimal nextBill = scan.nextBigDecimal();
+                                total = bill.add(nextBill);
+                            }
+
+
+                        }
+                        while(decision.equals("Y"));
+
+                        System.out.println(total);
+
+
+                     //   BigDecimal money = BigDecimal.valueOf();
                     }
                 } else if (choice2.equals("select item")){
 
