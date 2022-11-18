@@ -1,6 +1,7 @@
 package com.techelevator.ui;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 
@@ -29,10 +30,24 @@ public class UserOutput
         System.out.println();
     }
 
-    public static void displayInventory(){
-
-        System.out.println();
-
+    public static void displayInventory(List<String> inventory){
+        for(String current : inventory){
+        System.out.println(current);
+         }
     }
+
+    public static void displayPurchasingScreen()
+    {
+        System.out.println();
+        System.out.println("***************************************************");
+        System.out.println("                   Purchase Menu");
+        System.out.println("***************************************************");
+        System.out.println();
+        System.out.println();
+    }
+
+//    public static void displayPrice(BigDecimal price){
+//        System.out.println(price);
+//    }
 
 }
