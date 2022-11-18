@@ -34,37 +34,34 @@ public class VendingMachine
                 {
                     Gum gum = new Gum(name, new BigDecimal(price), slotID, type);
                     //itemMap.put(slotID, gum.getName());
-                    inventory.add(gum.getSlot());
-                    inventory.add(gum.getName());
-                    inventory.add(gum.getStartingStock().toString());
+                    inventory.add("Slot Identifier: " + gum.getSlot());
+                    inventory.add("Item Name: " + gum.getName());
+                    inventory.add("Remaining: " + gum.getStartingStock().toString() + "\n");
                 }
                 else if(type.equals("Drink"))
                 {
                     Drink drink = new Drink(name, new BigDecimal(price), slotID, type);
                     //itemMap.put(slotID,drink.getName());
-                    inventory.add(drink.getSlot());
-                    inventory.add(drink.getName());
-                    inventory.add(drink.getStartingStock().toString());
+                    inventory.add("Slot Identifier: " + drink.getSlot());
+                    inventory.add("Item Name: " + drink.getName());
+                    inventory.add("Remaining: " + drink.getStartingStock().toString() + "\n");
                 }
                 else if(type.equals("Munchy"))
                 {
                   Munchy munchy = new Munchy(name, new BigDecimal(price), slotID, type);
                     //itemMap.put(slotID,munchy.getName());
-                    inventory.add(munchy.getSlot());
-                    inventory.add(munchy.getName());
-                    inventory.add(munchy.getStartingStock().toString());
+                    inventory.add("Slot Identifier: " + munchy.getSlot());
+                    inventory.add("Item Name: " + munchy.getName());
+                    inventory.add("Remaining: " + munchy.getStartingStock().toString() + "\n");
                 }
                 else if(type.equals("Candy"))
                 {
                     Candy candy = new Candy(name, new BigDecimal(price), slotID, type);
                     //itemMap.put(slotID,candy.getName());
-                    inventory.add(candy.getSlot());
-                    inventory.add(candy.getName());
-                    inventory.add(candy.getStartingStock().toString());
+                    inventory.add("Slot Identifier: " + candy.getSlot());
+                    inventory.add("Item Name: " + candy.getName());
+                    inventory.add("Remaining: " + candy.getStartingStock().toString() + "\n");
                 }
-
-                //System.out.println(slotID + " " + name + " " + price);
-                //System.out.println(inventory);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -75,51 +72,49 @@ public class VendingMachine
             UserOutput.displayHomeScreen();
             String choice = UserInput.getHomeScreenOption();
 
-
             if(choice.equals("display"))
             {
-
-                //step 5 goes here
                 // display the vending machine slots
                 UserOutput.displayInventory(this.inventory);
-                //UserOutput.
-
             }
             else if(choice.equals("purchase"))
             {
+                String choice2 = "";
+                BigDecimal total= BigDecimal.valueOf(0);
                 while(true){
-                UserOutput.displayPurchasingScreen();
-                String choice2 = UserInput.getPurchasingScreenOption();
+
+                if(choice2.equals("")){
+                    UserOutput.displayPurchasingScreen();
+                    choice2 = UserInput.getPurchasingScreenOption(total);
+                    }
                 if (choice2.equals("feed money")){
                     while(true){
 
-                        BigDecimal total= BigDecimal.valueOf(0);
-                        BigDecimal bill = BigDecimal.valueOf(0);
                         String decision;
                         do{
                             System.out.println("What bill are you putting in: 1, 5, 10, 20");
-                            bill = scan.nextBigDecimal();
-                            //total = bill.add(total);
+                            String input = scan.nextLine();
+                            BigDecimal inputBD = new BigDecimal(input);
+
+                            total = total.add(inputBD);
 
                             System.out.println("Are you finished?");
                             decision = scan.nextLine();
 
-                            if(decision.equals("N")){
-                                System.out.println("Put in your next bill");
-                                BigDecimal nextBill = scan.nextBigDecimal();
-                                total = bill.add(nextBill);
+                            if(decision.equalsIgnoreCase("y")) {
+                                UserInput.getPurchasingScreenOption(total);
+                                break;
                             }
-
-
                         }
-                        while(decision.equals("Y"));
-
-                        System.out.println(total);
-
-
-                     //   BigDecimal money = BigDecimal.valueOf();
+                        while(decision.equals("N"));
+                        System.out.println("Total amount entered: " + total);
+                        choice2 = "select item";
+                        break;
                     }
+
                 } else if (choice2.equals("select item")){
+                    System.out.println();
+                    UserOutput.displaySelectingItemScreen();
 
                 } else if (choice2.equals("finish transaction")){
 
@@ -134,6 +129,7 @@ public class VendingMachine
                 // good bye
                 break;
             }
+
 
 
         }

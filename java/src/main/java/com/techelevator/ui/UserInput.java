@@ -1,6 +1,12 @@
 package com.techelevator.ui;
 
+import com.techelevator.application.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -46,15 +52,15 @@ public class UserInput
         }
 
     }
-    public static String getPurchasingScreenOption(){
+    public static String getPurchasingScreenOption(BigDecimal totalBalance){
         System.out.println("What would you like to do?");
         System.out.println();
 
         System.out.println("M) Feed Money");
         System.out.println("S) Select Item");
         System.out.println("F) Finish Transaction");
-
-        System.out.println("Current money provided: ");
+        System.out.println();
+        System.out.println("Current money provided: " + totalBalance);
         System.out.println();
         System.out.print("Please select an option: ");
 
@@ -79,11 +85,12 @@ public class UserInput
         }
 
     }
-//    public static String getUserMoney(){
-//
-//        System.out.println("Please enter ");
-//    }
+/*
+    public static String getUserMoney(){
 
+        System.out.println("Please enter ");
+    }
+*/
 
 
 }

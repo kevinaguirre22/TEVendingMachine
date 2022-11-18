@@ -49,5 +49,13 @@ public class UserOutput
 //    public static void displayPrice(BigDecimal price){
 //        System.out.println(price);
 //    }
+    public static void displaySelectingItemScreen(){
+        System.out.println();
+        System.out.println("***************************************************");
+        System.out.println("               Select An Item, ya dingus");
+        System.out.println("***************************************************");
+        System.out.println();
+        System.out.println();
+    }
 
 }
