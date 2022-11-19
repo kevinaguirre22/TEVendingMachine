@@ -6,20 +6,16 @@ import com.techelevator.ui.UserOutput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class VendingMachine 
 {
-    //private Map<String, String> itemMap = new HashMap<>();
-    private List<String> inventory = new ArrayList<>();
+    private Map<String, VendingItem> inventory = new HashMap<>();
     public void run()
     {
         Scanner scan = new Scanner(System.in);
         //test driven development to read the file
-        System.out.println("Enter the file path for your text file");
-        String fileInput = scan.nextLine();
-        File fileName = new File(fileInput);
+        File fileName = new File("catering.csv");
 
         try(Scanner fileScanner = new Scanner(fileName)){
             while(fileScanner.hasNextLine()){
@@ -33,34 +29,22 @@ public class VendingMachine
                 if(type.equals("Gum"))
                 {
                     Gum gum = new Gum(name, new BigDecimal(price), slotID, type);
-                    //itemMap.put(slotID, gum.getName());
-                    inventory.add("Slot Identifier: " + gum.getSlot());
-                    inventory.add("Item Name: " + gum.getName());
-                    inventory.add("Remaining: " + gum.getStartingStock().toString() + "\n");
+                    inventory.put(gum.getSlot(), gum);
                 }
                 else if(type.equals("Drink"))
                 {
                     Drink drink = new Drink(name, new BigDecimal(price), slotID, type);
-                    //itemMap.put(slotID,drink.getName());
-                    inventory.add("Slot Identifier: " + drink.getSlot());
-                    inventory.add("Item Name: " + drink.getName());
-                    inventory.add("Remaining: " + drink.getStartingStock().toString() + "\n");
+                    inventory.put(drink.getSlot(), drink);
                 }
                 else if(type.equals("Munchy"))
                 {
                   Munchy munchy = new Munchy(name, new BigDecimal(price), slotID, type);
-                    //itemMap.put(slotID,munchy.getName());
-                    inventory.add("Slot Identifier: " + munchy.getSlot());
-                    inventory.add("Item Name: " + munchy.getName());
-                    inventory.add("Remaining: " + munchy.getStartingStock().toString() + "\n");
+                    inventory.put(munchy.getSlot(), munchy);
                 }
                 else if(type.equals("Candy"))
                 {
                     Candy candy = new Candy(name, new BigDecimal(price), slotID, type);
-                    //itemMap.put(slotID,candy.getName());
-                    inventory.add("Slot Identifier: " + candy.getSlot());
-                    inventory.add("Item Name: " + candy.getName());
-                    inventory.add("Remaining: " + candy.getStartingStock().toString() + "\n");
+                    inventory.put(candy.getSlot(), candy);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -92,6 +76,7 @@ public class VendingMachine
 
                         String decision;
                         do{
+
                             System.out.println("What bill are you putting in: 1, 5, 10, 20");
                             String input = scan.nextLine();
                             BigDecimal inputBD = new BigDecimal(input);
@@ -101,25 +86,44 @@ public class VendingMachine
                             System.out.println("Are you finished?");
                             decision = scan.nextLine();
 
-                            if(decision.equalsIgnoreCase("y")) {
-                                UserInput.getPurchasingScreenOption(total);
-                                break;
-                            }
+//                            if(decision.equalsIgnoreCase("y")) {
+//                                UserInput.getPurchasingScreenOption(total);
+//                                break;
+//                            }
                         }
                         while(decision.equals("N"));
                         System.out.println("Total amount entered: " + total);
-                        choice2 = "select item";
+                        choice2 = "";
                         break;
                     }
 
                 } else if (choice2.equals("select item")){
                     System.out.println();
                     UserOutput.displaySelectingItemScreen();
+                    UserOutput.displayInventory(inventory);
+                    System.out.println("Enter slot number to select your item");
+                    String slotChoice = scan.nextLine();
 
-                } else if (choice2.equals("finish transaction")){
+                    //if(!slotChoice.equals(inventory.containsKey())){
+                      //  System.out.println("Invalid slot choice");
+                   // }
 
-                } else {
-                    break;
+                    if(slotChoice.equals(inventory.containsKey().getSlot())){
+                        System.out.println(inventory.get("A4").getName());
+                    }
+                  //  if(slotChoice = this.inventory.containsKey()){
+
+                    //}
+
+
+                } if (choice2.equals("finish transaction")){
+
+                        //for(String currentSlot : inventory){
+
+                        //}
+                        //if(this.inventory().equals!= )
+                        //has an infinite loop if else is stated
+                        break;
                 }
                 }
                 // make a purchase

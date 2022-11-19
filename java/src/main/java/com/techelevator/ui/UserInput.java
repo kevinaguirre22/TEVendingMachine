@@ -85,12 +85,11 @@ public class UserInput
         }
 
     }
-/*
-    public static String getUserMoney(){
+
+/*    public static String getUserMoney(){
 
         System.out.println("Please enter ");
-    }
-*/
+    }*/
 
 
 }

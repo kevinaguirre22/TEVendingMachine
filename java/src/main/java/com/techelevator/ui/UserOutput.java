@@ -1,5 +1,7 @@
 package com.techelevator.ui;
 
+import com.techelevator.application.VendingItem;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -30,9 +32,10 @@ public class UserOutput
         System.out.println();
     }
 
-    public static void displayInventory(List<String> inventory){
-        for(String current : inventory){
-        System.out.println(current);
+    public static void displayInventory(Map<String, VendingItem> inventory){
+        for(Map.Entry<String,VendingItem>  current : inventory.entrySet()){
+            System.out.println(current.getKey() + ": " + current.getValue().getName() + " - " + current.getValue().getStartingStock() + " remaining");
+            System.out.println();
          }
     }
 
