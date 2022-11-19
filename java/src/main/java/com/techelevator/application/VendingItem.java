@@ -1,6 +1,7 @@
 package com.techelevator.application;
 
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 
 public abstract class VendingItem {
     private String name;
@@ -57,6 +58,23 @@ public abstract class VendingItem {
     public void setStartingStock(Integer startingStock) {
         this.startingStock = startingStock;
     }
+    public void displayStockInfo(){
+        System.out.println(getName() + getPrice() );
 
+    }
+    public void displayStockInfo2(){
+        if(startingStock > 0){
+            startingStock--;
+        }
+        else{
+            System.out.println("NO LONGER AVAILABLE");
+        }
+    }
+
+    public void purchase(Boolean purchase){
+        if(purchase){
+            startingStock--;
+        }
+    }
 
 }

@@ -107,10 +107,17 @@ public class VendingMachine
                     //if(!slotChoice.equals(inventory.containsKey())){
                       //  System.out.println("Invalid slot choice");
                    // }
+                    for(Map.Entry<String,VendingItem>  current : inventory.entrySet()){
+                        String slotId = current.getKey();
+                        if (slotChoice.equals(slotId)){
+                            System.out.println("Munchy, Munchy, so Good!");
 
-                    if(slotChoice.equals(inventory.containsKey().getSlot())){
-                        System.out.println(inventory.get("A4").getName());
+                            System.out.println();
+                        }
                     }
+                   // if(slotChoice.equals(inventory.containsKey().getSlot())){
+                     //   System.out.println(inventory.get("A4").getName());
+                    //}
                   //  if(slotChoice = this.inventory.containsKey()){
 
                     //}
