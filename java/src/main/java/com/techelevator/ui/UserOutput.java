@@ -61,8 +61,4 @@ public class UserOutput
         System.out.println();
     }
 
-    public static void displayVendingMessage(){
-
-    }
-
 }
