@@ -6,6 +6,7 @@ import com.techelevator.ui.UserOutput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.*;
 
 public class VendingMachine 
@@ -47,7 +48,7 @@ public class VendingMachine
                             BigDecimal inputBD = new BigDecimal(input);
 
                             total = total.add(inputBD);
-
+                            UserOutput.writingToFile("Adding money");
                             System.out.println("Are you finished?");
                             decision = scan.nextLine();
 
@@ -79,9 +80,13 @@ public class VendingMachine
                             total = total.subtract(current.getValue().getPrice());
                             current.getValue().displayStockInfo();
                             //Andy recommended getting the audit data at this point.
+                            UserOutput.writingToFile("Purchased something");
                             System.out.println("You have a balance of: " + total);
                             UserOutput.displayPurchasingScreen();
                             UserInput.getPurchasingScreenOption(total);
+                                if(total.equals(0)){
+                                    System.out.println("out of funds");
+                                }
                         } /*else {
                             System.out.println("Invalid Slot Choice, ya goon! Make Better Choices Next Time!");
                             UserOutput.displayPurchasingScreen();
@@ -92,12 +97,30 @@ public class VendingMachine
                     }
 
                 } if (choice2.equals("finish transaction")){
-                        System.out.println("Here's your change: " + "(" + total + ") dollars");
+                    int dollars = 0;
+                    int quarters = 0;
+                    int dimes = 0;
+                    int nickels = 0;
 
-
-
+                    while(total.compareTo(new BigDecimal("0")) > 0){
+                        if(total.compareTo(new BigDecimal("1")) >= 0){
+                            dollars++;
+                            total = total.subtract(new BigDecimal("1"));
+                        } else if (total.compareTo(new BigDecimal("0.25")) >= 0){
+                            quarters++;
+                            total = total.subtract(new BigDecimal("0.25"));
+                        } else if (total.compareTo(new BigDecimal("0.10")) >= 0){
+                            dimes++;
+                            total = total.subtract(new BigDecimal("0.10"));
+                        } else if (total.compareTo(new BigDecimal("0.05")) >= 0){
+                            nickels++;
+                            total = total.subtract(new BigDecimal("0.05"));
+                        }
+                    }
+                        System.out.println("Your change is " + "(" + dollars + ") dollars, " + "(" + quarters + ") quarters, " + "(" + dimes + ") dimes, " + "(" + nickels + ") nickels.") ;
                         break;
                 }
+
                 }
                 // make a purchase
             }

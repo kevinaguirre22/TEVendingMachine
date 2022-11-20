@@ -2,6 +2,10 @@ package com.techelevator.ui;
 
 import com.techelevator.application.VendingItem;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +19,15 @@ import java.util.Map;
  */
 public class UserOutput
 {
+    static File audit = new File("audit.txt");
+
+    public static void writingToFile(String message){
+        try(PrintWriter writer = new PrintWriter(new FileOutputStream(audit, true))){
+            writer.println(message);
+        }catch(FileNotFoundException e){
+            System.out.println("File not found!");
+        }
+    }
 
     public static void displayMessage(String message)
     {
