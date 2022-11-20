@@ -60,18 +60,23 @@ public abstract class VendingItem {
     }
     public void displayStockInfo(){
         startingStock--;
-        if (startingStock <= 0){
+        if (startingStock < 0){
             System.out.println("NO LONGER AVAILABLE");
-        }
+        } else {
         System.out.println("Item: " + getName() + "\n" + "Cost: " + getPrice() + "\n" + "Remaining stock: " + startingStock);
+        }
     }
 
+
     public void displayUnavailableStockInfo(){
-        if(startingStock > 0){
-            startingStock--;
-        }
-        else{
+        if(startingStock == 0){
             System.out.println("NO LONGER AVAILABLE");
+        }
+    }
+
+    public void displayInvalidSlotChoice(String slotChoice){
+        if(!getSlot().contains(slotChoice)){
+            System.out.println("INVALID SLOT CHOICE");
         }
     }
 

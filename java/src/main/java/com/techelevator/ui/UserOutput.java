@@ -50,6 +50,7 @@ public class UserOutput
             System.out.println(current.getKey() + ": " + current.getValue().getName() + " - " + current.getValue().getStartingStock() + " remaining");
             System.out.println();
          }
+        System.out.println("Press Q to exit");
     }
 
     public static void displayPurchasingScreen()

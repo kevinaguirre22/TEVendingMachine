@@ -16,6 +16,7 @@ import java.util.*;
 public class VendingMachine 
 {
     private Map<String, VendingItem> inventory = new HashMap<>();
+    BigDecimal total = new BigDecimal ("0");
     public void run()
     {
         Scanner scan = new Scanner(System.in);
@@ -29,12 +30,13 @@ public class VendingMachine
             if(choice.equals("display"))
             {
                 // display the vending machine slots
+                System.out.println();
                 UserOutput.displayInventory(inventory);
+
             }
             else if(choice.equals("purchase"))
-            {
+            {   int counter = 0;
                 String choice2 = "";
-                BigDecimal total = BigDecimal.valueOf(0);
                 while(true){
 
                 if(choice2.equals("")){
@@ -49,6 +51,9 @@ public class VendingMachine
 
                             System.out.println("What bill are you putting in: 1, 5, 10, 20");
                             String input = scan.nextLine();
+                          //  if(!input.contains("1") && !input.contains("5") && !input.contains("10") && !input.contains("20")){
+                            //    System.out.println("Invalid bill");
+                           // }
                             BigDecimal inputBD = new BigDecimal(input);
 
                             total = total.add(inputBD);
@@ -77,13 +82,17 @@ public class VendingMachine
                     UserOutput.displayInventory(inventory);
                     System.out.println("Enter slot number to select your item");
                     String slotChoice = scan.nextLine();
+                    if(slotChoice.equalsIgnoreCase("Q")){
+                        break;
+                    }
 
-                    for(Map.Entry<String,VendingItem>  current : inventory.entrySet()){
+
+                        for(Map.Entry<String,VendingItem>  current : inventory.entrySet()){
                         String slotId = current.getKey();
                         BigDecimal balance = total;
 
-                        int counter = 0;
-                        if (slotChoice.equals(slotId)){
+
+                        if (slotChoice.equalsIgnoreCase(slotId) && current.getValue().getStartingStock() > 0){
                             counter++;
                             total = total.subtract(current.getValue().getPrice());
                             current.getValue().displayStockInfo();
@@ -99,12 +108,18 @@ public class VendingMachine
 
 
                             System.out.println("You have a balance of: " + total);
-                            UserOutput.displayPurchasingScreen();
-                            UserInput.getPurchasingScreenOption(total);
-                                if(total.equals(0)){
-                                    System.out.println("out of funds");
-                                }
-                        } /*else {
+                            //UserOutput.displayPurchasingScreen();
+                            //UserInput.getPurchasingScreenOption(total);
+
+                        } else if(slotChoice.equalsIgnoreCase(slotId) && current.getValue().getStartingStock() <= 0){
+                            current.getValue().displayUnavailableStockInfo();
+                        } /*else if (!slotChoice.equals(slotId)){
+                            current.getValue().displayInvalidSlotChoice(slotChoice);
+                        }*/
+/*                        if(!slotChoice.equals(slotId)){
+                            System.out.println("Invalid Slot Choice, ya goon! Make Better Choices Next Time!");
+                        }*/
+                       /* if (!slotChoice.equals(slotId)){
                             System.out.println("Invalid Slot Choice, ya goon! Make Better Choices Next Time!");
                             UserOutput.displayPurchasingScreen();
                             UserInput.getPurchasingScreenOption(total);
@@ -118,6 +133,7 @@ public class VendingMachine
                     int quarters = 0;
                     int dimes = 0;
                     int nickels = 0;
+                    String moneyBeforeChange = String.valueOf(total);
 
                     while(total.compareTo(new BigDecimal("0")) > 0){
                         if(total.compareTo(new BigDecimal("1")) >= 0){
@@ -137,7 +153,7 @@ public class VendingMachine
                         LocalDateTime nowLDT = LocalDateTime.now();
                         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                         String formatNow = nowLDT.format(format);
-                        UserOutput.writingToFile(formatNow + "\tCHANGE GIVEN:\t" + total + "\t0.00");
+                        UserOutput.writingToFile(formatNow + "\tCHANGE GIVEN:\t" + moneyBeforeChange + "\t0.00");
 
                         System.out.println("Your change is " + "(" + dollars + ") dollars, " + "(" + quarters + ") quarters, " + "(" + dimes + ") dimes, " + "(" + nickels + ") nickels.") ;
                         break;

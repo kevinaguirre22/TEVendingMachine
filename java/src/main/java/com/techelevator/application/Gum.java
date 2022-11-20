@@ -10,6 +10,8 @@ public class Gum extends VendingItem{
 
     public void displayStockInfo() {
         super.displayStockInfo();
-        System.out.println("Chewy, Chewy, Lots O Bubbles!");
+        if (getStartingStock() >= 0) {
+            System.out.println("Chewy, Chewy, Lots O Bubbles!");
+        }
     }
 }
