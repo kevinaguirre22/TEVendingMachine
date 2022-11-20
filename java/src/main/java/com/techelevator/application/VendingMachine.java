@@ -20,7 +20,7 @@ public class VendingMachine
     public void run()
     {
         Scanner scan = new Scanner(System.in);
-        readFile();
+        readFile("catering.csv");
 
         while(true)
         {
@@ -173,9 +173,9 @@ public class VendingMachine
         }
     }
 
-    public void readFile(){
+    public String readFile(String csvFile){
         //test driven development to read the file
-        File fileName = new File("catering.csv");
+        File fileName = new File(csvFile);
 
         try(Scanner fileScanner = new Scanner(fileName)){
             while(fileScanner.hasNextLine()){
@@ -207,11 +207,10 @@ public class VendingMachine
                     inventory.put(candy.getSlot(), candy);
                 }
             }
+            return "File found";
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
+            return "File not found";
         }
     }
-
-
-    
 }
