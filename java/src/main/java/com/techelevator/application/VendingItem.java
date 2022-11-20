@@ -1,5 +1,6 @@
 package com.techelevator.application;
 
+
 import java.math.BigDecimal;
 
 public abstract class VendingItem {
@@ -59,6 +60,9 @@ public abstract class VendingItem {
     }
     public void displayStockInfo(){
         startingStock--;
+        if (startingStock <= 0){
+            System.out.println("NO LONGER AVAILABLE");
+        }
         System.out.println("Item: " + getName() + "\n" + "Cost: " + getPrice() + "\n" + "Remaining stock: " + startingStock);
     }
 

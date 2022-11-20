@@ -9,3 +9,105 @@ Adding money
 Adding money
 Purchased something
 Purchased something
+Adding money
+Adding money
+Purchased something
+Purchased something
+Adding money
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Adding money
+Adding money
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Purchased something
+Adding money
+Purchased something
+Purchased something
+Adding money
+Purchased something
+Adding money
+Purchased something
+Adding money
+Purchased something
+Adding money
+Purchased something
+Purchased something
+Adding money
+Purchased something
+Purchased something
+2022-11-20
+2022-11-20T10:39:21.146428800
+2022-11-20T10:40:39.306152100
+2022-11-20T10:42:54.220335500 MONEY FED:     2020
+2022-11-20T10:42:58.846534400 MONEY FED:     2040
+2022-11-20T10:43:56.016109700 MONEY FED:     20 20
+2022-11-20T10:43:59.203591 MONEY FED:     10 30
+2022-11-20T10:44:04.324316300 MONEY FED:     5 35
+20-11-2022 11:03:47    MONEY FED:     20 20
+20-11-2022 11:03:50    MONEY FED:     10 30
+20-11-2022 11:03:55    MONEY FED:     5 35
+20-11-2022 11:08:29    MONEY FED:     20 20
+20-11-2022 11:08:42    MONEY FED:     20 40
+20-11-2022 11:08:46    MONEY FED:     20 60
+20-11-2022 11:08:50    MONEY FED:     10 70
+20-11-2022 11:08:59com.techelevator.application.Munchy@7cd62f43
+20-11-2022 11:09:05com.techelevator.application.Candy@6d4b1c02
+20-11-2022 11:09:13com.techelevator.application.Candy@6093dd95
+20-11-2022 11:10:31    MONEY FED:     20 20
+20-11-2022 11:10:35    MONEY FED:     10 30
+20-11-2022 11:10:40 A4
+20-11-2022 11:10:44 B4
+20-11-2022 11:10:49 A3
+20-11-2022 11:13:56    MONEY FED:     20 20
+20-11-2022 11:14:00    MONEY FED:     20 40
+20-11-2022 11:14:06 Chippos      A4 36.15
+20-11-2022 11:14:11 Wonka Bar      B4 33.80
+20-11-2022 11:14:18 Mountain Melter      B3 30.25
+20-11-2022 11:15:49    MONEY FED:     20 20
+20-11-2022 11:15:53    MONEY FED:     20 40
+20-11-2022 11:15:57 Chippos      A4 36.1536.15
+20-11-2022 11:16:02 Wonka Bar      B4 33.8033.80
+20-11-2022 11:16:10 Snykkers      A3 29.5529.55
+20-11-2022 11:17:33    MONEY FED:     20 20
+20-11-2022 11:17:36    MONEY FED:     20 40
+20-11-2022 11:17:40 Chippos      A4 36.1540
+20-11-2022 11:17:44 Wonka Bar      B4 33.8036.15
+20-11-2022 11:17:47 Snykkers      A3 29.5533.80
+20-11-2022 11:18:28    MONEY FED:     20 20
+20-11-2022 11:18:33    MONEY FED:     20 40
+20-11-2022 11:18:42 Chippos      A4 40 36.15
+20-11-2022 11:18:56 Wonka Bar      B4 36.15 33.80
+20-11-2022 11:19:04 Snykkers      A3 33.80 29.55
+20-11-2022 11:20:42    MONEY FED:     20 20
+20-11-2022 11:20:50    MONEY FED:     20 40
+20-11-2022 11:20:58	Chippos	A4	40	36.15
+20-11-2022 11:21:23	Wonka Bar	B4	36.15	33.80
+20-11-2022 11:21:27	Snykkers	A3	33.80	29.55
+20-11-2022 11:23:34	MONEY FED:	20	20
+20-11-2022 11:23:36	MONEY FED:	20	40
+20-11-2022 11:23:41	MONEY FED:	10	50
+20-11-2022 11:23:44	MONEY FED:	5	55
+20-11-2022 11:23:47	MONEY FED:	1	56
+20-11-2022 11:23:55	Chippos	A4	56	52.15
+20-11-2022 11:24:08	Wonka Bar	B4	52.15	49.80
+20-11-2022 11:24:12	Snykkers	A3	49.80	45.55
+20-11-2022 11:43:51	MONEY FED:	20	20
+20-11-2022 11:43:54	
+20-11-2022 11:45:13	MONEY FED:	20	20
+20-11-2022 11:45:15	CHANGE GIVEN:	00.00

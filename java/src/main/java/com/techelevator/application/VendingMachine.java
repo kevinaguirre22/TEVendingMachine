@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class VendingMachine 
@@ -48,7 +52,11 @@ public class VendingMachine
                             BigDecimal inputBD = new BigDecimal(input);
 
                             total = total.add(inputBD);
-                            UserOutput.writingToFile("Adding money");
+                            LocalDateTime nowLDT = LocalDateTime.now();
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                            String formatNow = nowLDT.format(format);
+
+                            UserOutput.writingToFile(formatNow + "\tMONEY FED:\t" + input + "\t" + total);
                             System.out.println("Are you finished?");
                             decision = scan.nextLine();
 
@@ -69,18 +77,27 @@ public class VendingMachine
                     UserOutput.displayInventory(inventory);
                     System.out.println("Enter slot number to select your item");
                     String slotChoice = scan.nextLine();
-                    int counter = 0;
 
                     for(Map.Entry<String,VendingItem>  current : inventory.entrySet()){
                         String slotId = current.getKey();
-//                        BigDecimal balance = total.subtract(current.getValue().getPrice());
+                        BigDecimal balance = total;
 
+                        int counter = 0;
                         if (slotChoice.equals(slotId)){
                             counter++;
                             total = total.subtract(current.getValue().getPrice());
                             current.getValue().displayStockInfo();
+                            if(counter % 2 == 0){
+                                //BigDecimal bogodo = current.getValue().getPrice().subtract(new BigDecimal("1.00"));
+                                total = total.add(new BigDecimal("1.00"));
+                            }
                             //Andy recommended getting the audit data at this point.
-                            UserOutput.writingToFile("Purchased something");
+                            LocalDateTime nowLDT = LocalDateTime.now();
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                            String formatNow = nowLDT.format(format);
+                            UserOutput.writingToFile(formatNow + "\t" + current.getValue().getName() + "\t" + slotId + "\t" +  balance + "\t" + total );
+
+
                             System.out.println("You have a balance of: " + total);
                             UserOutput.displayPurchasingScreen();
                             UserInput.getPurchasingScreenOption(total);
@@ -117,6 +134,11 @@ public class VendingMachine
                             total = total.subtract(new BigDecimal("0.05"));
                         }
                     }
+                        LocalDateTime nowLDT = LocalDateTime.now();
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                        String formatNow = nowLDT.format(format);
+                        UserOutput.writingToFile(formatNow + "\tCHANGE GIVEN:\t" + total + "\t0.00");
+
                         System.out.println("Your change is " + "(" + dollars + ") dollars, " + "(" + quarters + ") quarters, " + "(" + dimes + ") dimes, " + "(" + nickels + ") nickels.") ;
                         break;
                 }
