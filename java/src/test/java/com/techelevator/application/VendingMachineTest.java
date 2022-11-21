@@ -14,7 +14,7 @@ public class VendingMachineTest{
         vendingMachine = new VendingMachine();
     }
 
-    //rachelle, eric im so sorry
+    //we're so sorry
     @Test
     public void isThereACsv(){
         String actual = vendingMachine.readFile("catering.csv");
